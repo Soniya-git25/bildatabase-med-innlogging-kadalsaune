@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opprett bruker</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <h1>Opprett ny bruker</h1>
+    <form onsubmit="registrerBruker(event)">
+        <label for="fornavn">Fornavn:</label>
+        <input type="text" id="fornavn" name="fornavn" required>
+
+        <label for="etternavn">Etternavn:</label>
+        <input type="text" id="etternavn" name="etternavn" required>
+
+        <label for="epost">Epost:</label>
+        <input type="email" id="epost" name="epost" required>
+
+        <label for="passord">Passord:</label>
+        <input type="password" id="passord" name="passord" required>
+
+        <label for="passordBekreft">Bekreft passord:</label>
+        <input type="password" id="passordBekreft" name="passordBekreft" required>
+
+        <button type="submit">Opprett bruker</button>
+    </form>
+
+    <p>Har du allerede en bruker? <a href="/login">Logg inn her</a></p>
+
+    <script src="./javascripts/registerHandler.js"></script>
+</body>
+</html>

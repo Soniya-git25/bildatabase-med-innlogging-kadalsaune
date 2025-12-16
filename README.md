@@ -4,6 +4,11 @@
 Dette skal bli en bildatabase der man må logge inn for å se informasjon fra databasen.
 
 I malen er det satt opp En grunnleggende express-mal med routes og SQLite-database.
+Lag en egen HTML-side med et skjema der brukeren kan skrive inn informasjon for å opprette ny bruker.
+Lag JavaScript som sender registreringsdataene til serveren ved hjelp av `fetch`.
+Lag en ny rute i Express som tar imot dataene, krypterer passordet og lagrer brukeren i databasen.
+Send en bekreftelse tilbake til frontend når brukeren er opprettet.
+Test at brukeren kan logge inn etter registrering.
 
 **For å kjøre Express-appen, stå i rotmappen i terminalen og kjør følgende kommandoer:**
 

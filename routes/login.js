@@ -16,13 +16,13 @@ router.post('/', async (req, res) => {
         return res.status(401).json({ message: "Feil epost eller passord" });        
     }
 
-    const passordErGyldig = passord === bruker.passord;
+    const passordErGyldig = await bcrypt.compare(passord, bruker.passord);
     if (!passordErGyldig) {
         return res.status(401).json({message: "Feil epost eller passord" })
     }
 
     req.session.bruker = { id: bruker.id, fornavn: bruker.fornavn };
-    res.json({ message: "Innlogging vellykket" });
+    res.json({ message: "Trykke på OK" });
 })
 
 module.exports = router;

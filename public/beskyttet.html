@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beskyttet side</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .welcome {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bildatabase</h1>
+            <button class="logout-btn" onclick="loggUt()">Logg ut</button>
+        </div>
+
+        <div id="welcome" class="welcome"></div>
+
+        <h2>Velkommen til bildatabasen</h2>
+        <p>Du er nå logget inn og kan se informasjon fra databasen.</p>
+
+        <h3>Biler:</h3>
+        <div id="biler-list"></div>
+
+        <h3>Personer:</h3>
+        <div id="personer-list"></div>
+    </div>
+
+    <script src="./javascripts/beskyttet.js"></script>
+</body>
+</html>

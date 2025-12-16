@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const personerRouter = require('./routes/personer');
 const bilerRouter = require('./routes/biler');
 const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register');
 const beskyttetRouter = require('./routes/beskyttet');
 
 const app = express();
@@ -36,6 +37,17 @@ app.use('/users', usersRouter);
 app.use('/personer', personerRouter);
 app.use('/biler', bilerRouter);
 app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 app.use('/beskyttet', beskyttetRouter);
+
+// Logout rute
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ message: "Feil ved utlogging" });
+        }
+        res.json({ message: "Utlogging vellykket" });
+    });
+});
 
 module.exports = app;
