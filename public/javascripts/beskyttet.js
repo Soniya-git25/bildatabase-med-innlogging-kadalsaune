@@ -22,12 +22,24 @@ async function loggUt() {
 // Hent og vis data fra databasen når siden lastes
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Hent brukernavn (vil være satt av serveren når siden ble vist)
+        // Hent brukerinformasjon
+        const brukerResponse = await fetch('/beskyttet/bruker');
+        if (!brukerResponse.ok) {
+            if (brukerResponse.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+            throw new Error('Kunne ikke hente brukerinformasjon');
+        }
+        const bruker = await brukerResponse.json();
         const welcomeDiv = document.getElementById('welcome');
-        welcomeDiv.innerHTML = '<p>Du er logget inn. Hent databasedata nedenfor.</p>';
+        welcomeDiv.innerHTML = `<p>Velkommen, ${bruker.fornavn}! Du er logget inn og kan se informasjon fra databasen.</p>`;
 
         // Hent biler
         const bilerResponse = await fetch('/biler');
+        if (!bilerResponse.ok) {
+            throw new Error('Kunne ikke hente biler');
+        }
         const biler = await bilerResponse.json();
         const bilerList = document.getElementById('biler-list');
         if (Array.isArray(biler) && biler.length > 0) {
@@ -40,6 +52,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Hent personer
         const personerResponse = await fetch('/personer');
+        if (!personerResponse.ok) {
+            throw new Error('Kunne ikke hente personer');
+        }
         const personer = await personerResponse.json();
         const personerList = document.getElementById('personer-list');
         if (Array.isArray(personer) && personer.length > 0) {
@@ -51,5 +66,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } catch (error) {
         console.error('Feil ved henting av data:', error);
+        // Hvis det er en autentiseringsfeil, redirect til login
+        if (error.message.includes('401') || error.message.includes('Kunne ikke hente brukerinformasjon')) {
+            window.location.href = '/login';
+        } else {
+            alert('En feil oppstod ved lasting av siden: ' + error.message);
+        }
     }
 });

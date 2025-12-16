@@ -1,13 +1,63 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="no">
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildatabase med innlogging</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn.secondary {
+            background-color: #28a745;
+        }
+        .btn.secondary:hover {
+            background-color: #218838;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
+    <div class="container">
+        <h1>Velkommen til Bildatabasen</h1>
+        <p>Dette er en sikker bildatabase hvor du må logge inn for å se informasjon.</p>
 
+        <a href="/login" class="btn">Logg inn</a>
+        <a href="/register" class="btn secondary">Registrer ny bruker</a>
+
+        <p style="margin-top: 40px; font-size: 14px; color: #888;">
+            For å se bil- og persondata, må du først opprette en konto eller logge inn.
+        </p>
+    </div>
+</body>
 </html>
+

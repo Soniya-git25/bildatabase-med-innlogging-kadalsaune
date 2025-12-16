@@ -9,4 +9,9 @@ router.get("/", kreverInnlogging, (req, res) => {
     res.sendFile(path.join(__dirname, '../public/beskyttet.html'));
 });
 
+// Hent brukerinformasjon
+router.get("/bruker", kreverInnlogging, (req, res) => {
+    res.json({ fornavn: req.session.bruker.fornavn });
+});
+
 module.exports = router;
